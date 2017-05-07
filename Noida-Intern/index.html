@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test Intern</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <style type="text/css">
+        html {
+            font-family: Raleway, Segoe UI, Arial;
+            font-size: 1.2rem;
+        }
+
+        body {
+            width: 100%;
+            background: #232526;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #414345, #232526);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #414345, #232526);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            font-family: Raleway, Segoe UI, Arial;
+            overflow-x: hidden;
+        }
+
+        .main-container {
+            width: 60%;
+            margin: 60px auto;
+            padding: 60px;
+            background: #fff;
+            border-radius: 10px;
+        }
+
+        h3 {
+            font-size: 2rem;
+        }
+
+        input,
+        select {
+            padding: 5px 10px;
+            font-family: Raleway, Segoe UI, Arial;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #000;
+        }
+
+        label {
+            float: left;
+            width: 150px;
+            margin: 10px 0;
+        }
+
+        #submitButton {
+            width: 200px;
+            background: #333;
+            padding: 7px 30px;
+            color: #fff;
+            border: 1px solid #000;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #box1,
+        #box2 {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        #fullLabel {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <h3>Box Selector | The Man Company</h3>
+        <form name="box">
+            <label for="rg">Select a Box:</label>
+            <input type="radio" value="box1" name="rg">Box 1 &nbsp;&nbsp;
+            <input type="radio" value="box2" name="rg">Box 2 <br/><br/>
+            <label for="selCol">Select a color:</label>
+            <select name="color" id="selCol">
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+            </select><br/><br/>
+            <label for="height" id="fullLabel">Enter Dimensions (Only Numbers):</label><br/>
+            <input type="text" name="height" id="hgt" placeholder="Height" pattern="\d*">
+            <input type="text" name="width" id="wdh" placeholder="Width" pattern="\d*">
+            <br/><br/>
+            <input type="button" id="submitButton" value="Render Box" onclick="renderBox()">
+        </form><br>
+        <hr>
+        <div class="result">
+            <h3>Result</h3>
+            <div id="box1">Box 1</div>
+            <div id="box2">Box 2</div>
+        </div>
+    </div>
+    <script>
+        function renderBox() {
+            if (document.getElementById('hgt').checkValidity()) {
+                var r = document.forms["box"]["rg"].value;
+                var c = document.forms["box"]["color"].value;
+                var w = document.forms["box"]["width"].value;
+                var h = document.forms["box"]["height"].value;
+                document.getElementById(r).style.background = c;
+                document.getElementById(r).style.width = w + 'px';
+                document.getElementById(r).style.height = h + 'px';
+            } else {
+                window.alert('Invalid (Non-Number) inputs in Height/Width field!');
+                location.reload();                
+            }
+
+        }
+    </script>
+</body>
+
+</html>
